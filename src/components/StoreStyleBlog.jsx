@@ -4,7 +4,7 @@ import { blogposts } from "../data";
 
 // STYLING
 const StoreGridContainerStyled = styled.section`
-  margin: 0 10%;
+  margin: 0 10% 8%;
 `;
 
 const StoreGridTitleStyled = styled.div`
@@ -47,6 +47,11 @@ const StoreGridStyled = styled.div`
 
 const StorePostStyled = styled.div`
   cursor: pointer;
+  transition: var(--transition);
+
+  &:hover {
+    transform: translateY(-5px);
+  }
 
   > div {
     img {
@@ -67,10 +72,10 @@ const StorePostStyled = styled.div`
     color: var(--gray-color);
     font-weight: 500;
     font-family: "Open Sans", sans-serif;
-    margin: 15px 0;
+    margin: 20px 0;
   }
 
-  > small {
+  small {
     font-size: 0.55rem;
     font-style: italic;
   }
@@ -85,7 +90,7 @@ const StoreStyleBlog = () => {
       </StoreGridTitleStyled>
       <StoreGridStyled>
         {blogposts.map((post) => (
-          <StorePostStyled>
+          <StorePostStyled key={post.id}>
             <div>
               <img src={post.img} alt="Autor do post" />
             </div>

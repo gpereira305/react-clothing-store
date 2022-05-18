@@ -76,7 +76,7 @@ export const blogposts = [
     title: "Um pouco de como ser feliz com o melhor da moda",
     content:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard...",
-    authorAndDate: "04 de Abril de 2021 | por Roberta Cantareira",
+    authorAndDate: "04 de Abril de 2021 | por Roberta Cordeiro",
     id: 5,
   },
 ];

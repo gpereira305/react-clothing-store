@@ -16,7 +16,7 @@ const StoreGridItemStyled = styled.div`
     font-size: 1rem;
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 25px;
     transition: var(--transition);
     font-weight: normal;
   }
@@ -44,6 +44,21 @@ const StoreGridItemStyled = styled.div`
     font-size: 0.8rem;
     transition: var(--transition);
     bottom: 5px;
+  }
+`;
+
+const StoreSaleTagStyled = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--green-color);
+  z-index: 5;
+
+  > span {
+    color: var(--white-color);
+    text-transform: uppercase;
+    padding: 0 10px;
+    font-size: 0.55rem;
   }
 `;
 
@@ -84,8 +99,15 @@ const StoreGridIconsStyled = styled.div`
 const StoreGridItem = ({ product }) => {
   const { name, price, img } = product;
 
+  console.log(price < 20);
+
   return (
     <StoreGridItemStyled>
+      {price < 20 && (
+        <StoreSaleTagStyled>
+          <span>Promoção</span>
+        </StoreSaleTagStyled>
+      )}
       <img src={img} alt="" />
       <StoreGridOverlayStyled>
         <h4>R${price}</h4>

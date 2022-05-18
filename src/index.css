@@ -5,6 +5,9 @@
   letter-spacing: 0.5px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 /* 
 *===============================
 *         VARIÁVEIS
@@ -13,10 +16,11 @@
 :root {
   --body-color: #f3f4f3;
   --black-color: #000000;
+  --dark-color: #1e1e1e;
   --light-pink: #f2ece7;
   --gray-color: #707070;
   --white-color: #ffffff;
-  --green-color: #0abd62;
+  --green-color: #16b36e;
   --red-color: #ed1212;
   --salmon-color: #f57250;
   --light_gray-color: #eff1f2;
@@ -67,20 +71,30 @@ body {
   -webkit-font-smoothing: antialiased;
   line-height: 24px;
   font-weight: 400;
-  height: 200vh;
 }
 
 .shrunk {
   padding: 10px 5% !important;
-  background-color: var(--black-color) !important;
+  top: 0 !important;
+  -webkit-box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.05);
 }
 
 .shrunk-h3 {
   font-size: 1.5rem;
-  color: var(--white-color) !important;
 }
 
 .shrunk-icons {
-  color: var(--white-color) !important;
   font-size: 1.3rem;
+}
+
+.parallax {
+  background-image: url("./assets/images/parallax-image.jpg");
+  position: relative;
+  height: 560px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
 }

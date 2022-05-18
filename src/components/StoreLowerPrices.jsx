@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { products } from "../data";
 import StoreGridItem from "./StoreGridItem";
+import StoreSpinner from "./StoreSpinner";
 
 // STYLING
 const StoreGridContainerStyled = styled.section`
@@ -53,13 +54,17 @@ const StoreLowerPrices = () => {
         <h4>Coleção de Verão</h4>
         <h3>Produtos com desconto</h3>
       </StoreGridTitleStyled>
-      <StoreGridStyled>
-        {products
-          .filter((p) => p.price < 20)
-          .map((product) => (
-            <StoreGridItem product={product} key={product.id} />
-          ))}
-      </StoreGridStyled>
+      {!products ? (
+        <StoreSpinner />
+      ) : (
+        <StoreGridStyled>
+          {products
+            .filter((p) => p.price < 20)
+            .map((product) => (
+              <StoreGridItem product={product} key={product.id} />
+            ))}
+        </StoreGridStyled>
+      )}
     </StoreGridContainerStyled>
   );
 };

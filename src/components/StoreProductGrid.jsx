@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { products } from "../data";
 import StoreGridItem from "./StoreGridItem";
+import StoreSpinner from "./StoreSpinner";
 
 // STYLING
 const StoreGridContainerStyled = styled.section`
@@ -48,19 +49,22 @@ const StoreGridStyled = styled.div`
 
 const StoreProductGrid = ({ title, subtitle }) => {
   return (
-    <StoreGridContainerStyled>
+    <StoreGridContainerStyled id="collection">
       <StoreGridTitleStyled>
         <h4>{title}</h4>
         <h3>{subtitle}</h3>
       </StoreGridTitleStyled>
-
-      <StoreGridStyled>
-        {products
-          .filter((p) => p.price > 19.99)
-          .map((product) => (
-            <StoreGridItem product={product} key={product.id} />
-          ))}
-      </StoreGridStyled>
+      {!products ? (
+        <StoreSpinner />
+      ) : (
+        <StoreGridStyled>
+          {products
+            .filter((p) => p.price > 19.99)
+            .map((product) => (
+              <StoreGridItem product={product} key={product.id} />
+            ))}
+        </StoreGridStyled>
+      )}
     </StoreGridContainerStyled>
   );
 };

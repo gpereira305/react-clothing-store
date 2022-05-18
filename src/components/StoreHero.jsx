@@ -40,8 +40,9 @@ const StoreHeroStyled = styled.div`
   div {
     display: flex;
     position: absolute;
+    flex-direction: column;
     width: 100%;
-    justify-content: center;
+    text-align: center;
     bottom: 45%;
     z-index: 10;
 
@@ -53,6 +54,7 @@ const StoreHeroStyled = styled.div`
       background-color: var(--black-color);
       cursor: pointer;
       font-size: 0.75rem;
+      align-self: center;
     }
   }
 `;
@@ -63,6 +65,9 @@ const StoreHero = () => {
       <img src={banner} alt="Hero" />
       <div>
         <h3>Promoções todos os dias!</h3>
+        <button type="button">
+          <a href="#collection">Coleção</a>
+        </button>
       </div>
     </StoreHeroStyled>
   );
