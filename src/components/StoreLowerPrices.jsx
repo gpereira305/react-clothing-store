@@ -46,17 +46,16 @@ const StoreGridStyled = styled.div`
   }
 `;
 
-const StoreProductGrid = ({ title, subtitle }) => {
+const StoreLowerPrices = () => {
   return (
     <StoreGridContainerStyled>
       <StoreGridTitleStyled>
-        <h4>{title}</h4>
-        <h3>{subtitle}</h3>
+        <h4>Coleção de Verão</h4>
+        <h3>Produtos com desconto</h3>
       </StoreGridTitleStyled>
-
       <StoreGridStyled>
         {products
-          .filter((p) => p.price > 19.99)
+          .filter((p) => p.price < 20)
           .map((product) => (
             <StoreGridItem product={product} key={product.id} />
           ))}
@@ -65,4 +64,4 @@ const StoreProductGrid = ({ title, subtitle }) => {
   );
 };
 
-export default StoreProductGrid;
+export default StoreLowerPrices;

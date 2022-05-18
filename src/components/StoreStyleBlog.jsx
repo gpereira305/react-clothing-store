@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { products } from "../data";
-import StoreGridItem from "./StoreGridItem";
+import { blogposts } from "../data";
 
 // STYLING
 const StoreGridContainerStyled = styled.section`
@@ -46,23 +45,59 @@ const StoreGridStyled = styled.div`
   }
 `;
 
-const StoreProductGrid = ({ title, subtitle }) => {
+const StorePostStyled = styled.div`
+  cursor: pointer;
+
+  > div {
+    img {
+      width: 100%;
+    }
+  }
+
+  > h4 {
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.3;
+    margin-top: 15px;
+  }
+
+  > p {
+    line-height: 1.3;
+    font-size: 0.75rem;
+    color: var(--gray-color);
+    font-weight: 500;
+    font-family: "Open Sans", sans-serif;
+    margin: 15px 0;
+  }
+
+  > small {
+    font-size: 0.55rem;
+    font-style: italic;
+  }
+`;
+
+const StoreStyleBlog = () => {
   return (
     <StoreGridContainerStyled>
       <StoreGridTitleStyled>
-        <h4>{title}</h4>
-        <h3>{subtitle}</h3>
+        <h4>Histórias de amor à moda</h4>
+        <h3>Nosso blog de estilo de vida</h3>
       </StoreGridTitleStyled>
-
       <StoreGridStyled>
-        {products
-          .filter((p) => p.price > 19.99)
-          .map((product) => (
-            <StoreGridItem product={product} key={product.id} />
-          ))}
+        {blogposts.map((post) => (
+          <StorePostStyled>
+            <div>
+              <img src={post.img} alt="Autor do post" />
+            </div>
+            <h4>{post.title}</h4>
+            <p>{post.content}</p>
+            <hr />
+            <small>{post.authorAndDate}</small>
+          </StorePostStyled>
+        ))}
       </StoreGridStyled>
     </StoreGridContainerStyled>
   );
 };
 
-export default StoreProductGrid;
+export default StoreStyleBlog;

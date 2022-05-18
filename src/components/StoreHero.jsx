@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import banner from "../assets/images/banner-img.jpg";
 import styled from "styled-components";
 
@@ -9,7 +9,8 @@ const StoreHeroStyled = styled.div`
     position: absolute;
     content: "";
     width: 100%;
-    height: 98.7%;
+    height: 100%;
+    bottom: 9.5px;
     background-color: rgb(0 0 0 / 50%);
     z-index: 5;
     left: 0;
@@ -17,7 +18,23 @@ const StoreHeroStyled = styled.div`
 
   > img {
     width: 100%;
-    margin-top: 4.5%;
+    margin-top: 3.5%;
+
+    @media (max-width: 980px) {
+      margin-top: 7%;
+    }
+    @media (max-width: 720px) {
+      margin-top: 10%;
+    }
+    @media (max-width: 570px) {
+      margin-top: 13%;
+    }
+    @media (max-width: 470px) {
+      margin-top: 16%;
+    }
+    @media (max-width: 380px) {
+      margin-top: 20%;
+    }
   }
 
   div {
@@ -45,7 +62,7 @@ const StoreHero = () => {
     <StoreHeroStyled>
       <img src={banner} alt="Hero" />
       <div>
-        <button type="button">Ir às compras</button>
+        <h3>Promoções todos os dias!</h3>
       </div>
     </StoreHeroStyled>
   );
