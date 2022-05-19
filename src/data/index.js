@@ -1,3 +1,4 @@
+// produtos
 import image1 from "../assets/images/products/product-01.jpg";
 import image2 from "../assets/images/products/product-02.jpg";
 import image3 from "../assets/images/products/product-03.jpg";
@@ -14,11 +15,26 @@ import image13 from "../assets/images/products/product-13.jpg";
 import image14 from "../assets/images/products/product-14.jpg";
 import image15 from "../assets/images/products/product-15.jpg";
 
+// posts blog
 import post1 from "../assets/images/post-1.jpg";
 import post2 from "../assets/images/post-2.jpg";
 import post3 from "../assets/images/post-3.jpg";
 import post4 from "../assets/images/post-4.jpg";
 import post5 from "../assets/images/post-5.jpg";
+
+// post instagram
+import instagramPost1 from "../assets/images/instagram-post.jpg";
+import instagramPost2 from "../assets/images/instagram-post2.jpg";
+import instagramPost3 from "../assets/images/instagram-post3.jpg";
+import instagramPost4 from "../assets/images/instagram-post4.jpg";
+import instagramPost5 from "../assets/images/instagram-post5.jpg";
+import instagramPost6 from "../assets/images/instagram-post6.jpg";
+import instagramPost7 from "../assets/images/instagram-post7.jpg";
+import instagramPost8 from "../assets/images/instagram-post8.jpg";
+import instagramPost9 from "../assets/images/instagram-post9.jpg";
+import instagramPost10 from "../assets/images/instagram-post10.jpg";
+import instagramPost11 from "../assets/images/instagram-post11.jpg";
+import instagramPost12 from "../assets/images/instagram-post12.jpg";
 
 export const products = [
   { img: image1, name: "Blusa Zapda", price: "19.99", id: 1 },
@@ -79,4 +95,19 @@ export const blogposts = [
     authorAndDate: "04 de Abril de 2021 | por Roberta Cordeiro",
     id: 5,
   },
+];
+
+export const instaposts = [
+  { img: instagramPost1, id: 1 },
+  { img: instagramPost2, id: 2 },
+  { img: instagramPost3, id: 3 },
+  { img: instagramPost4, id: 4 },
+  { img: instagramPost5, id: 5 },
+  { img: instagramPost6, id: 6 },
+  { img: instagramPost7, id: 7 },
+  { img: instagramPost8, id: 8 },
+  { img: instagramPost9, id: 9 },
+  { img: instagramPost10, id: 10 },
+  { img: instagramPost11, id: 11 },
+  { img: instagramPost12, id: 12 },
 ];

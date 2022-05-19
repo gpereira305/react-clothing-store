@@ -49,7 +49,7 @@ const StoreGridStyled = styled.div`
 
 const StoreLowerPrices = () => {
   return (
-    <StoreGridContainerStyled>
+    <StoreGridContainerStyled id="sale">
       <StoreGridTitleStyled>
         <h4>Coleção de Verão</h4>
         <h3>Produtos com desconto</h3>

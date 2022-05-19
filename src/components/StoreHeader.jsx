@@ -21,7 +21,6 @@ const StoreSlideTrack = styled.div`
   height: 100%;
 
   @media (max-width: 820px) {
-    border: 1px solid red;
     min-width: 70%;
     justify-content: space-between;
   }
@@ -68,6 +67,10 @@ const StoreHeaderStyled = styled.header`
   transition: var(--transition);
   z-index: 100;
   top: 34px;
+
+  @media (max-width: 620px) {
+    padding: 5px 5%;
+  }
 `;
 
 const StoreLogoStyled = styled.div`
@@ -75,6 +78,10 @@ const StoreLogoStyled = styled.div`
     font-weight: 300;
     transition: var(--transition);
     color: var(--white-color);
+
+    @media (max-width: 620px) {
+      font-size: 1.2rem;
+    }
   }
 `;
 
@@ -86,8 +93,40 @@ const StoreNavStyled = styled.nav`
   span {
     transition: var(--transition);
     color: var(--white-color);
+    margin-left: 10px;
+
+    @media (max-width: 620px) {
+      font-size: 1.2rem;
+    }
   }
 `;
+
+const socials = [
+  {
+    link: "https://www.facebook.com",
+    name: "fa-brands fa-facebook-f",
+    title: "Facebook",
+    id: 1,
+  },
+  {
+    link: "https://www.instagram.com",
+    name: "fa-brands fa-instagram",
+    title: "Instagram",
+    id: 2,
+  },
+  {
+    link: "https://www.pinterest.com",
+    name: "fa-brands fa-pinterest-p",
+    title: "Pinterest",
+    id: 3,
+  },
+  {
+    link: "https://www.youtube.com",
+    name: "fa-brands fa-youtube",
+    title: "Youtube",
+    id: 4,
+  },
+];
 
 const StoreHeader = () => {
   const [isShrunk, setShrunk] = useState(false);
@@ -129,20 +168,16 @@ const StoreHeader = () => {
           </StoreSlideItem>
           <StoreSlideItem>
             <div className="social">
-              <a href="http://" target="_blank" rel="noopener noreferrer">
-                <i className="fa-brands fa-facebook-f" title="Facebook"></i>
-              </a>
-              <a href="http://" target="_blank" rel="noopener noreferrer">
-                {" "}
-                <i className="fa-brands fa-instagram" title="Instagram"></i>
-              </a>
-              <a href="http://" target="_blank" rel="noopener noreferrer">
-                <i className="fa-brands fa-pinterest-p" title="Pinterest"></i>
-              </a>
-              <a href="http://" target="_blank" rel="noopener noreferrer">
-                {" "}
-                <i className="fa-brands fa-youtube" title="Youtube"></i>
-              </a>
+              {socials.map((social) => (
+                <a
+                  href={social.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  key={social.id}
+                >
+                  <i className={social.name} title={social.title}></i>
+                </a>
+              ))}
             </div>
           </StoreSlideItem>
         </StoreSlideTrack>

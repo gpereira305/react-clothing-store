@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import banner from "../assets/images/banner-img.jpg";
 import styled from "styled-components";
 
@@ -18,22 +18,26 @@ const StoreHeroStyled = styled.div`
 
   > img {
     width: 100%;
-    margin-top: 3.5%;
+    margin-top: 2.5%;
 
-    @media (max-width: 980px) {
-      margin-top: 7%;
+    @media (max-width: 1220px) {
+      margin-top: 4%;
     }
-    @media (max-width: 720px) {
-      margin-top: 10%;
+    @media (max-width: 990px) {
+      margin-top: 5.2%;
     }
-    @media (max-width: 570px) {
-      margin-top: 13%;
+    @media (max-width: 820px) {
+      margin-top: 6.1%;
     }
-    @media (max-width: 470px) {
-      margin-top: 16%;
+    @media (max-width: 670px) {
+      margin-top: 8%;
     }
-    @media (max-width: 380px) {
-      margin-top: 20%;
+    @media (max-width: 520px) {
+      margin-top: 12.5%;
+    }
+
+    @media (max-width: 420px) {
+      margin-top: 15.5%;
     }
   }
 
@@ -43,18 +47,36 @@ const StoreHeroStyled = styled.div`
     flex-direction: column;
     width: 100%;
     text-align: center;
-    bottom: 45%;
+    bottom: 30%;
     z-index: 10;
 
-    button {
-      padding: 10px 20px;
+    @media (max-width: 780px) {
+      display: none;
+    }
+
+    h3 {
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--body-color);
+      margin-bottom: 25px;
+    }
+
+    a {
+      padding: 5px 20px;
       text-transform: uppercase;
-      border: none;
       color: var(--white-color);
-      background-color: var(--black-color);
+      border: 2px solid var(--white-color);
       cursor: pointer;
       font-size: 0.75rem;
+      font-weight: 500;
       align-self: center;
+      min-width: 150px;
+      transition: var(--transition);
+
+      &:hover {
+        background-color: var(--white-color);
+        color: var(--black-color);
+      }
     }
   }
 `;
@@ -64,10 +86,8 @@ const StoreHero = () => {
     <StoreHeroStyled>
       <img src={banner} alt="Hero" />
       <div>
-        <h3>Promoções todos os dias!</h3>
-        <button type="button">
-          <a href="#collection">Coleção</a>
-        </button>
+        <h3>Nova coleção de verão</h3>
+        <a href="#collection">Coleção de verão</a>
       </div>
     </StoreHeroStyled>
   );

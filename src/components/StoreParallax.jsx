@@ -18,19 +18,29 @@ const StoreParallaxWrapperStyled = styled.div`
     bottom: 45%;
     z-index: 10;
 
-    h4 {
+    h3 {
       font-size: 2rem;
+      font-weight: 400;
+      color: var(--body-color);
+      margin-bottom: 25px;
     }
 
-    button {
-      padding: 10px 20px;
+    a {
+      padding: 5px 20px;
       text-transform: uppercase;
       border: none;
       color: var(--white-color);
-      background-color: var(--black-color);
+      border: 2px solid var(--white-color);
       cursor: pointer;
       font-size: 0.75rem;
       align-self: center;
+      min-width: 150px;
+      transition: var(--transition);
+
+      &:hover {
+        background-color: var(--white-color);
+        color: var(--black-color);
+      }
     }
   }
 `;
@@ -40,10 +50,8 @@ const StoreParallax = () => {
     <StoreParallaxStyled>
       <StoreParallaxWrapperStyled className="parallax">
         <div>
-          <h4>Toda a coleção de verão</h4>
-          <button type="button">
-            <a href="#collection">Coleção</a>
-          </button>
+          <h3>Promoções todos os dias!</h3>
+          <a href="#sale">Confira</a>
         </div>
       </StoreParallaxWrapperStyled>
     </StoreParallaxStyled>
