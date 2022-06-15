@@ -1,218 +1,190 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import "../index.css";
-
-// STYLING
-const StoreSlideWrapper = styled.div`
-  position: fixed;
-  width: 100%;
-  background-color: var(--white-color);
-  z-index: 10;
-  padding: 5px;
-  height: 33px;
-`;
-
-const StoreSlideTrack = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  max-width: 50%;
-  margin: auto;
-  height: 100%;
-
-  @media (max-width: 820px) {
-    min-width: 70%;
-    justify-content: space-between;
-  }
-
-  @media (max-width: 620px) {
-    min-width: 90%;
-  }
-`;
-
-const StoreSlideItem = styled.div`
-  span {
-    color: var(--black-color);
-    font-weight: 600;
-  }
-
-  .social {
-    display: flex;
-    justify-content: space-evenly;
-    min-width: 130px;
-
-    a {
-      font-size: 1rem;
-      color: var(--black-color);
-    }
-
-    @media (max-width: 420px) {
-      min-width: 100px;
-
-      .fa-brands {
-        font-size: 0.7rem;
-      }
-    }
-  }
-`;
-
-const StoreHeaderStyled = styled.header`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 5%;
-  background-color: var(--black-color);
-  position: fixed;
-  width: 100%;
-  transition: var(--transition);
-  z-index: 100;
-  top: 34px;
-
-  @media (max-width: 620px) {
-    padding: 5px 5%;
-  }
-`;
-
-const StoreLogoStyled = styled.div`
-  > h3 {
-    font-weight: 300;
-    transition: var(--transition);
-    color: var(--white-color);
-
-    @media (max-width: 620px) {
-      font-size: 1.2rem;
-    }
-  }
-`;
-
-const StoreNavStyled = styled.nav`
-  > ul {
-    display: flex;
-  }
-
-  span {
-    transition: var(--transition);
-    color: var(--white-color);
-    margin-left: 10px;
-
-    @media (max-width: 620px) {
-      font-size: 1.2rem;
-    }
-  }
-`;
+import "../styles/index.css";
+import { Link, useLocation } from "react-router-dom";
+import {
+    StoreHeaderStyled,
+    StoreLogoStyled,
+    StoreMenuBurgerStyled,
+    StoreMenuIconStyled,
+    StoreMenuMobileStyled,
+    StoreNavIconsStyled,
+    StoreNavMenuStyled,
+    StoreNavStyled,
+    StoreSlideItemStyled,
+    StoreSlideTrackStyled,
+    StoreSlideWrapperStyled,
+    StoreOverlayStyled,
+} from "../styles/StoreHeaderStyled";
 
 const socials = [
-  {
-    link: "https://www.facebook.com",
-    name: "fa-brands fa-facebook-f",
-    title: "Facebook",
-    id: 1,
-  },
-  {
-    link: "https://www.instagram.com",
-    name: "fa-brands fa-instagram",
-    title: "Instagram",
-    id: 2,
-  },
-  {
-    link: "https://www.pinterest.com",
-    name: "fa-brands fa-pinterest-p",
-    title: "Pinterest",
-    id: 3,
-  },
-  {
-    link: "https://www.youtube.com",
-    name: "fa-brands fa-youtube",
-    title: "Youtube",
-    id: 4,
-  },
+    {
+        link: "https://www.facebook.com",
+        name: "fa-brands fa-facebook-f",
+        title: "Facebook",
+        id: 1,
+    },
+    {
+        link: "https://www.instagram.com",
+        name: "fa-brands fa-instagram",
+        title: "Instagram",
+        id: 2,
+    },
+    {
+        link: "https://www.pinterest.com",
+        name: "fa-brands fa-pinterest-p",
+        title: "Pinterest",
+        id: 3,
+    },
+    {
+        link: "https://www.youtube.com",
+        name: "fa-brands fa-youtube",
+        title: "Youtube",
+        id: 4,
+    },
 ];
 
 const StoreHeader = () => {
-  const [isShrunk, setShrunk] = useState(false);
+    const [isShrunk, setShrunk] = useState(false);
+    const [isOpen, setOpen] = useState(false);
+    let [toggleNav, setToggleNav] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => {
-      setShrunk((isShrunk) => {
-        if (
-          !isShrunk &&
-          (document.body.scrollTop > 20 ||
-            document.documentElement.scrollTop > 20)
-        ) {
-          return true;
-        }
-        if (
-          isShrunk &&
-          document.body.scrollTop < 4 &&
-          document.documentElement.scrollTop < 4
-        ) {
-          return false;
-        }
-        return isShrunk;
-      });
+    useEffect(() => {
+        const onScroll = () => {
+            setShrunk((isShrunk) => {
+                if (
+                    !isShrunk &&
+                    (document.body.scrollTop > 20 ||
+                        document.documentElement.scrollTop > 20)
+                ) {
+                    return true;
+                }
+                if (
+                    isShrunk &&
+                    document.body.scrollTop < 4 &&
+                    document.documentElement.scrollTop < 4
+                ) {
+                    return false;
+                }
+                return isShrunk;
+            });
+        };
+
+        window.addEventListener("scroll", onScroll);
+        return () => window.removeEventListener("scroll", onScroll);
+    }, []);
+
+    const handleToggleMenu = () => {
+        setToggleNav(!toggleNav);
+        // goToTopImg()
     };
 
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    return (
+        <>
+            <StoreSlideWrapperStyled>
+                <StoreSlideTrackStyled>
+                    <StoreSlideItemStyled>
+                        <span>+55 (99)8568908</span>
+                    </StoreSlideItemStyled>
+                    <StoreSlideItemStyled>
+                        <span>info@venezza.com</span>
+                    </StoreSlideItemStyled>
+                    <StoreSlideItemStyled>
+                        <div className="social">
+                            {socials.map((social) => (
+                                <a
+                                    href={social.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    key={social.id}
+                                >
+                                    <i
+                                        className={social.name}
+                                        title={social.title}
+                                    ></i>
+                                </a>
+                            ))}
+                        </div>
+                    </StoreSlideItemStyled>
+                </StoreSlideTrackStyled>
+            </StoreSlideWrapperStyled>
 
-  return (
-    <>
-      <StoreSlideWrapper>
-        <StoreSlideTrack>
-          <StoreSlideItem>
-            <span>+55 (99)8568908</span>
-          </StoreSlideItem>
-          <StoreSlideItem>
-            <span>info@venezza.com</span>
-          </StoreSlideItem>
-          <StoreSlideItem>
-            <div className="social">
-              {socials.map((social) => (
-                <a
-                  href={social.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  key={social.id}
+            <StoreHeaderStyled className={isShrunk ? "shrunk" : ""}>
+                <StoreNavStyled>
+                    <StoreLogoStyled title="Home | Levezza">
+                        <a className={isShrunk ? "shrunk-h3" : ""} href="/">
+                            Venezza
+                        </a>
+                    </StoreLogoStyled>
+
+                    <StoreNavMenuStyled>
+                        <a href="#collection">Novidades</a>
+                        <a href="#sale">Descontos</a>
+                        <a href="#blog">Blog</a>
+                    </StoreNavMenuStyled>
+
+                    <StoreNavIconsStyled>
+                        <li>
+                            <span
+                                className={`material-icons ${
+                                    isShrunk ? "shrunk-icons" : ""
+                                }`}
+                            >
+                                person
+                            </span>
+                        </li>
+                        <li title="Ver carrinho">
+                            <span
+                                className={`material-icons ${
+                                    isShrunk ? "shrunk-icons" : ""
+                                }`}
+                            >
+                                shopping_bag
+                            </span>
+                        </li>
+                    </StoreNavIconsStyled>
+                </StoreNavStyled>
+
+                <StoreMenuIconStyled
+                    onClick={handleToggleMenu}
+                    title="Abrir menu"
                 >
-                  <i className={social.name} title={social.title}></i>
-                </a>
-              ))}
-            </div>
-          </StoreSlideItem>
-        </StoreSlideTrack>
-      </StoreSlideWrapper>
+                    <StoreMenuBurgerStyled open={toggleNav} />
+                    <StoreMenuBurgerStyled open={toggleNav} />
+                    <StoreMenuBurgerStyled open={toggleNav} />
+                </StoreMenuIconStyled>
 
-      <StoreHeaderStyled className={isShrunk ? "shrunk" : ""}>
-        <StoreLogoStyled title="Home | Levezza">
-          <h3 className={isShrunk ? "shrunk-h3" : ""}>Levezza</h3>
-        </StoreLogoStyled>
-
-        <StoreNavStyled>
-          <ul>
-            <li>
-              <span
-                className={`material-icons ${isShrunk ? "shrunk-icons" : ""}`}
-              >
-                person
-              </span>
-            </li>
-            <li title="Ver carrinho">
-              <span
-                className={`material-icons ${isShrunk ? "shrunk-icons" : ""}`}
-              >
-                shopping_bag
-              </span>
-            </li>
-          </ul>
-        </StoreNavStyled>
-
-        <div style={{ display: "none" }}>
-          <span className="material-icons">menu</span>
-        </div>
-      </StoreHeaderStyled>
-    </>
-  );
+                <StoreMenuMobileStyled open={toggleNav}>
+                    <ul>
+                        <li onClick={handleToggleMenu}>
+                            <span
+                                className={`material-icons ${
+                                    isShrunk ? "shrunk-icons" : ""
+                                }`}
+                            >
+                                person
+                            </span>
+                        </li>
+                        <li title="Ver carrinho" onClick={handleToggleMenu}>
+                            <span
+                                className={`material-icons ${
+                                    isShrunk ? "shrunk-icons" : ""
+                                }`}
+                            >
+                                shopping_bag
+                            </span>
+                        </li>
+                        <li onClick={handleToggleMenu}>Novidades</li>
+                        <li onClick={handleToggleMenu}>Descontos</li>
+                        <li onClick={handleToggleMenu}>Blog</li>
+                    </ul>
+                </StoreMenuMobileStyled>
+                <StoreOverlayStyled
+                    open={toggleNav}
+                    onClick={handleToggleMenu}
+                />
+            </StoreHeaderStyled>
+        </>
+    );
 };
 
 export default StoreHeader;
