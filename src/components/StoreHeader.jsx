@@ -45,7 +45,7 @@ const socials = [
 
 const StoreHeader = () => {
     const [isShrunk, setShrunk] = useState(false);
-    const [isOpen, setOpen] = useState(false);
+    const [user, setUser] = useState(true);
     let [toggleNav, setToggleNav] = useState(false);
 
     useEffect(() => {
@@ -77,6 +77,9 @@ const StoreHeader = () => {
         setToggleNav(!toggleNav);
         // goToTopImg()
     };
+
+    const username = "Carlos Santos";
+    // str.slice(0, str.indexOf('-'))
 
     return (
         <>
@@ -124,12 +127,33 @@ const StoreHeader = () => {
 
                     <StoreNavIconsStyled>
                         <li>
+                            {user ? (
+                                <span
+                                    style={{ fontSize: ".75rem" }}
+                                    title={username}
+                                >
+                                    Bem vindo,{" "}
+                                    {username.slice(0, username.indexOf(" "))}
+                                </span>
+                            ) : (
+                                <span
+                                    className={`material-icons ${
+                                        isShrunk ? "shrunk-icons" : ""
+                                    }`}
+                                    title="Usuário"
+                                >
+                                    person
+                                </span>
+                            )}
+                        </li>
+                        <li title="Ver carrinho">
                             <span
                                 className={`material-icons ${
                                     isShrunk ? "shrunk-icons" : ""
                                 }`}
+                                title="Carrinho"
                             >
-                                person
+                                shopping_bag
                             </span>
                         </li>
                         <li title="Ver carrinho">
@@ -137,8 +161,9 @@ const StoreHeader = () => {
                                 className={`material-icons ${
                                     isShrunk ? "shrunk-icons" : ""
                                 }`}
+                                title="Dashboard"
                             >
-                                shopping_bag
+                                settings
                             </span>
                         </li>
                     </StoreNavIconsStyled>
@@ -155,27 +180,45 @@ const StoreHeader = () => {
 
                 <StoreMenuMobileStyled open={toggleNav}>
                     <ul>
-                        <li onClick={handleToggleMenu}>
+                        {user ? (
                             <span
-                                className={`material-icons ${
-                                    isShrunk ? "shrunk-icons" : ""
-                                }`}
+                                style={{
+                                    fontSize: ".9rem",
+                                }}
+                                title={username}
                             >
-                                person
+                                Bem vindo, <br />
+                                {username.slice(0, username.indexOf(" "))}
                             </span>
-                        </li>
+                        ) : (
+                            <li onClick={handleToggleMenu}>
+                                <span
+                                    className="material-icons"
+                                    title="Usuário"
+                                >
+                                    person
+                                </span>
+                            </li>
+                        )}
                         <li title="Ver carrinho" onClick={handleToggleMenu}>
-                            <span
-                                className={`material-icons ${
-                                    isShrunk ? "shrunk-icons" : ""
-                                }`}
-                            >
+                            <span className="material-icons" title="Carrinho">
                                 shopping_bag
                             </span>
                         </li>
-                        <li onClick={handleToggleMenu}>Novidades</li>
-                        <li onClick={handleToggleMenu}>Descontos</li>
-                        <li onClick={handleToggleMenu}>Blog</li>
+                        <li title="Ver carrinho" onClick={handleToggleMenu}>
+                            <span className="material-icons" title="Dashboard">
+                                settings
+                            </span>
+                        </li>
+                        <li onClick={handleToggleMenu}>
+                            <a href="#collection">Novidades</a>
+                        </li>
+                        <li onClick={handleToggleMenu}>
+                            <a href="#sale">Descontos</a>
+                        </li>
+                        <li onClick={handleToggleMenu}>
+                            <a href="#blog">Blog</a>
+                        </li>
                     </ul>
                 </StoreMenuMobileStyled>
                 <StoreOverlayStyled

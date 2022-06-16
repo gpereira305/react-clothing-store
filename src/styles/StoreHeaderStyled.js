@@ -95,18 +95,34 @@ export const StoreNavMenuStyled = styled.div`
     align-items: center;
     width: 30%;
     min-width: 280px;
-
-    @media (max-width: 620px) {
-        display: none;
-    }
+    position: relative;
 
     a {
         font-size: 1rem;
         color: var(--body-color);
+        position: relative;
 
-        @media (max-width: 620px) {
-            font-size: 0.7rem;
+        &::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--white-color);
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
         }
+
+        &:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+    }
+
+    @media (max-width: 820px) {
+        display: none;
     }
 `;
 
@@ -121,8 +137,9 @@ export const StoreNavIconsStyled = styled.ul`
             transition: var(--transition);
             color: var(--white-color);
             margin-left: 10px;
+            cursor: pointer;
 
-            @media (max-width: 620px) {
+            @media (max-width: 820px) {
                 display: none;
             }
         }
@@ -132,7 +149,7 @@ export const StoreNavIconsStyled = styled.ul`
 export const StoreMenuIconStyled = styled.div`
     display: none;
 
-    @media (max-width: 620px) {
+    @media (max-width: 820px) {
         display: flex;
         flex-direction: column;
         color: var(--white-color);
@@ -150,8 +167,19 @@ export const StoreMenuMobileStyled = styled.div`
     background-color: var(--black-color);
     height: 100vh;
     justify-content: center;
+    text-align: center;
     z-index: 10;
     transition: all ease-in-out 0.3s;
+
+    @media (max-width: 620px) {
+        width: 65%;
+        right: ${(props) => (props.open ? 0 : "-110%")};
+    }
+
+    @media (max-width: 520px) {
+        width: 100%;
+        right: ${(props) => (props.open ? 0 : "-100%")};
+    }
 
     > ul {
         color: var(--white-color);
@@ -165,8 +193,9 @@ export const StoreMenuMobileStyled = styled.div`
         > li {
             font-size: 1rem;
 
-            > span {
-                font-size: 1.7rem;
+            > a {
+                font-size: 1rem;
+                color: var(--white-color);
             }
         }
     }
