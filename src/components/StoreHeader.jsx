@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "../styles/index.css";
-import { Link, useLocation } from "react-router-dom";
 import {
     StoreHeaderStyled,
     StoreLogoStyled,
@@ -142,7 +141,7 @@ const StoreHeader = () => {
                                     </span>
 
                                     <StoreNavDialogWrapperStyled>
-                                        <span class="material-icons">
+                                        <span className="material-icons">
                                             arrow_drop_down
                                         </span>
                                         <StoreNavDialogStyled>
@@ -201,12 +200,12 @@ const StoreHeader = () => {
 
                                 <div>
                                     <span
-                                        class="material-icons"
+                                        className="material-icons"
                                         style={{ marginBottom: "20px" }}
                                     >
                                         settings
                                     </span>
-                                    <span class="material-icons">
+                                    <span className="material-icons">
                                         storefront
                                     </span>
                                 </div>

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { StoreContext } from "../storeContext";
 import {
     StoreGridIconsStyled,
     StoreGridItemStyled,
@@ -8,6 +9,9 @@ import {
 
 const StoreGridItem = ({ product }) => {
     const { name, price, img } = product;
+
+    const { handleToggleModal, setToggleModal, toggleModal } =
+        useContext(StoreContext);
 
     return (
         <StoreGridItemStyled>
@@ -20,7 +24,11 @@ const StoreGridItem = ({ product }) => {
             <StoreGridOverlayStyled>
                 <h4>R${price}</h4>
                 <StoreGridIconsStyled>
-                    <span className="material-icons" title="Ver detalhes">
+                    <span
+                        className="material-icons"
+                        title="Ver detalhes"
+                        onClick={handleToggleModal}
+                    >
                         visibility
                     </span>
                     <span

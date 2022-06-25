@@ -1,7 +1,7 @@
 import React from "react";
 import { products } from "../data";
 import StoreGridItem from "./StoreGridItem";
-import StoreSpinner from "./StoreSpinner";
+import StoreSpinner from "./common/StoreSpinner";
 import {
     StoreGridContainerStyled,
     StoreGridStyled,

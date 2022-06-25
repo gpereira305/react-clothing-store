@@ -7,6 +7,8 @@ import StoreLowerPrices from "../components/StoreLowerPrices";
 import StoreParallax from "../components/StoreParallax";
 import StoreProductGrid from "../components/StoreProductGrid";
 import StoreBlog from "../components/StoreBlog";
+import StoreProductDetailModal from "../components/common/StoreProductDetailModal";
+import StoreNewsLetterPopup from "../components/common/StoreNewsLetterPopup";
 
 const StoreHomePage = () => {
     return (
@@ -14,10 +16,12 @@ const StoreHomePage = () => {
             <StoreHeader />
             <StoreHero />
             <StoreProductGrid title="Nova Coleção" subtitle="Novidades" />
+            <StoreProductDetailModal />
             <StoreLowerPrices />
             <StoreBlog />
             <StoreBuyingInfo />
             <StoreParallax />
+            <StoreNewsLetterPopup />
             <StoreFooter />
         </>
     );
