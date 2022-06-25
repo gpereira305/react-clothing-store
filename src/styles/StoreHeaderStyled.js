@@ -63,7 +63,7 @@ export const StoreHeaderStyled = styled.header`
     width: 100%;
     transition: var(--transition);
     z-index: 100;
-    top: 34px;
+    top: 33px;
 
     @media (max-width: 620px) {
         padding: 5px 5%;
@@ -128,6 +128,7 @@ export const StoreNavMenuStyled = styled.div`
 
 export const StoreNavIconsStyled = styled.ul`
     display: flex;
+    position: relative;
 
     li {
         display: flex;
@@ -143,6 +144,41 @@ export const StoreNavIconsStyled = styled.ul`
                 display: none;
             }
         }
+    }
+`;
+
+export const StoreNavDialogWrapperStyled = styled.div`
+    display: flex;
+
+    &:hover > div {
+        display: flex;
+    }
+`;
+
+export const StoreNavDialogStyled = styled.div`
+    position: absolute;
+    left: 9px;
+    top: 70%;
+    background-color: var(--black-color);
+    width: 78%;
+    height: 8vh;
+    display: none;
+    flex-direction: column;
+    text-align: end;
+    padding: 10px;
+    justify-content: space-around;
+
+    &:hover {
+        display: flex;
+    }
+
+    p {
+        color: var(--white-color);
+        cursor: pointer;
+    }
+
+    > span {
+        font-size: 1.2rem;
     }
 `;
 
@@ -185,13 +221,25 @@ export const StoreMenuMobileStyled = styled.div`
         color: var(--white-color);
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly;
-        height: 45%;
+        justify-content: space-between;
+        height: 65%;
         margin-top: 5%;
         cursor: pointer;
 
         > li {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             font-size: 1rem;
+
+            > span {
+                margin-bottom: 20px;
+            }
+
+            > div {
+                display: flex;
+                flex-direction: column;
+            }
 
             > a {
                 font-size: 1rem;

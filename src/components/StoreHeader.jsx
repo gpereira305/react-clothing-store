@@ -14,6 +14,8 @@ import {
     StoreSlideTrackStyled,
     StoreSlideWrapperStyled,
     StoreOverlayStyled,
+    StoreNavDialogStyled,
+    StoreNavDialogWrapperStyled,
 } from "../styles/StoreHeaderStyled";
 
 const socials = [
@@ -79,7 +81,6 @@ const StoreHeader = () => {
     };
 
     const username = "Carlos Santos";
-    // str.slice(0, str.indexOf('-'))
 
     return (
         <>
@@ -128,13 +129,28 @@ const StoreHeader = () => {
                     <StoreNavIconsStyled>
                         <li>
                             {user ? (
-                                <span
-                                    style={{ fontSize: ".75rem" }}
-                                    title={username}
-                                >
-                                    Bem vindo,{" "}
-                                    {username.slice(0, username.indexOf(" "))}
-                                </span>
+                                <>
+                                    <span
+                                        style={{ fontSize: ".75rem" }}
+                                        title={username}
+                                    >
+                                        Bem vindo,{" "}
+                                        {username.slice(
+                                            0,
+                                            username.indexOf(" ")
+                                        )}
+                                    </span>
+
+                                    <StoreNavDialogWrapperStyled>
+                                        <span class="material-icons">
+                                            arrow_drop_down
+                                        </span>
+                                        <StoreNavDialogStyled>
+                                            <p title="Perfil">Perfil</p>
+                                            <p title="Dashboard">Dashboard</p>
+                                        </StoreNavDialogStyled>
+                                    </StoreNavDialogWrapperStyled>
+                                </>
                             ) : (
                                 <span
                                     className={`material-icons ${
@@ -146,6 +162,7 @@ const StoreHeader = () => {
                                 </span>
                             )}
                         </li>
+
                         <li title="Ver carrinho">
                             <span
                                 className={`material-icons ${
@@ -154,16 +171,6 @@ const StoreHeader = () => {
                                 title="Carrinho"
                             >
                                 shopping_bag
-                            </span>
-                        </li>
-                        <li title="Ver carrinho">
-                            <span
-                                className={`material-icons ${
-                                    isShrunk ? "shrunk-icons" : ""
-                                }`}
-                                title="Dashboard"
-                            >
-                                settings
                             </span>
                         </li>
                     </StoreNavIconsStyled>
@@ -181,15 +188,29 @@ const StoreHeader = () => {
                 <StoreMenuMobileStyled open={toggleNav}>
                     <ul>
                         {user ? (
-                            <span
-                                style={{
-                                    fontSize: ".9rem",
-                                }}
-                                title={username}
-                            >
-                                Bem vindo, <br />
-                                {username.slice(0, username.indexOf(" "))}
-                            </span>
+                            <li>
+                                <span
+                                    style={{
+                                        fontSize: ".9rem",
+                                    }}
+                                    title={username}
+                                >
+                                    Bem vindo, <br />
+                                    {username.slice(0, username.indexOf(" "))}
+                                </span>
+
+                                <div>
+                                    <span
+                                        class="material-icons"
+                                        style={{ marginBottom: "20px" }}
+                                    >
+                                        settings
+                                    </span>
+                                    <span class="material-icons">
+                                        storefront
+                                    </span>
+                                </div>
+                            </li>
                         ) : (
                             <li onClick={handleToggleMenu}>
                                 <span
@@ -203,11 +224,6 @@ const StoreHeader = () => {
                         <li title="Ver carrinho" onClick={handleToggleMenu}>
                             <span className="material-icons" title="Carrinho">
                                 shopping_bag
-                            </span>
-                        </li>
-                        <li title="Ver carrinho" onClick={handleToggleMenu}>
-                            <span className="material-icons" title="Dashboard">
-                                settings
                             </span>
                         </li>
                         <li onClick={handleToggleMenu}>
