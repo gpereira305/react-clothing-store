@@ -8,17 +8,18 @@
 html {
     scroll-behavior: smooth;
 }
-/* 
-*===============================
-*         VARIÁVEIS
-*===============================
-*/
+/**
+ * ----------------------------------------
+ *       VARIÁVEIS
+ * ----------------------------------------
+ */
 :root {
     --body-color: #f3f4f3;
     --black-color: #000000;
     --dark-color: #1e1e1e;
     --light-pink: #f2ece7;
     --gray-color: #707070;
+    --gray-color2: #dddddd;
     --white-color: #ffffff;
     --green-color: #16b36e;
     --red-color: #ed1212;
@@ -27,11 +28,11 @@ html {
     --transition: all 0.4s ease-in-out;
 }
 
-/* 
-*===============================
-*         PAGE SETTINGS
-*===============================
-*/
+/**
+ * ----------------------------------------
+ *       PAGE SETTINGS
+ * ----------------------------------------
+ */
 h1,
 h2,
 h3,
@@ -40,18 +41,6 @@ h5,
 h6,
 p {
     margin: 0;
-}
-
-h1 {
-    font-size: 2.5rem;
-}
-
-h2 {
-    font-size: 2.2rem;
-}
-
-h3 {
-    font-size: 1.9rem;
 }
 
 li {
@@ -66,7 +55,6 @@ body {
     width: 100%;
     background-color: var(--body-color);
     position: relative;
-    font-size: 62.5%;
     font-family: "Poppins", sans-serif;
     -webkit-font-smoothing: antialiased;
     line-height: 24px;
@@ -97,4 +85,31 @@ body {
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
+}
+
+/**
+ * ----------------------------------------
+ *      animation fade-in
+ * ----------------------------------------
+ */
+.fade-in {
+    -webkit-animation: fade-in 0.5s both;
+    animation: fade-in 0.5s both;
+}
+
+@-webkit-keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }

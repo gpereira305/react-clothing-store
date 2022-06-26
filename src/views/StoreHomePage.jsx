@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import StoreBuyingInfo from "../components/StoreBuyingInfo";
 import StoreFooter from "../components/StoreFooter";
 import StoreHeader from "../components/StoreHeader";

@@ -18,6 +18,7 @@ const StoreHeroStyled = styled.div`
             rgba(254, 242, 238, 0) 100%
         );
         z-index: 5;
+        bottom: 7px;
         left: 0;
     }
 

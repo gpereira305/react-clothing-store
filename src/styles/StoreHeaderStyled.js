@@ -31,6 +31,11 @@ export const StoreSlideItemStyled = styled.div`
     span {
         color: var(--black-color);
         font-weight: 600;
+        font-size: 0.85rem;
+
+        @media (max-width: 720px) {
+            font-size: 0.65rem;
+        }
     }
 
     .social {
