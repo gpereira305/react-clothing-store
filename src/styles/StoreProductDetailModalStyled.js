@@ -179,3 +179,10 @@ export const StoreProductDetailSocialStyled = styled.div`
         margin-top: 5%;
     }
 `;
+
+export const StoreProductHorizontalLineStyled = styled.span`
+    display: flex;
+    width: 100%;
+    height: 1px;
+    background-color: var(--gray-color2);
+`;

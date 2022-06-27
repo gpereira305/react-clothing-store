@@ -118,7 +118,7 @@ const StoreHeader = () => {
                                         <span className="material-icons">
                                             arrow_drop_down
                                         </span>
-                                        <StoreNavDialogStyled>
+                                        <StoreNavDialogStyled className="fade-in">
                                             <p title="Perfil">Perfil</p>
                                             <p title="Dashboard">Dashboard</p>
                                         </StoreNavDialogStyled>

@@ -6,6 +6,7 @@ import {
     StoreProductButtonStyled,
     StoreProductCloseModalStyled,
     StoreProductDetailSocialStyled,
+    StoreProductHorizontalLineStyled,
     StoreProductImageStyled,
     StoreProductInfoH3Styled,
     StoreProductInfoParagraphStyled,
@@ -42,7 +43,8 @@ const StoreProductDetailModal = () => {
                     <StoreProductInfoSpanStyled>
                         R$ 29,99
                     </StoreProductInfoSpanStyled>
-                    <hr />
+
+                    <StoreProductHorizontalLineStyled />
 
                     <StoreProductInfoParagraphStyled>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -51,7 +53,8 @@ const StoreProductDetailModal = () => {
                         illo dolorem nobis optio eum quia sunt explicabo
                         cupiditate maiores! Architecto a blanditiis repellendus
                     </StoreProductInfoParagraphStyled>
-                    <hr />
+
+                    <StoreProductHorizontalLineStyled />
 
                     <StoreProductSelectWrapperStyled>
                         <StoreProductSelectStyled name="Price" id="price">
@@ -72,7 +75,9 @@ const StoreProductDetailModal = () => {
                             Adicionar ao carrinho
                         </StoreProductButtonStyled>
                     </StoreProductSelectWrapperStyled>
-                    <hr />
+
+                    <StoreProductHorizontalLineStyled />
+
                     <StoreProductDetailSocialStyled>
                         {socials.map((social) => (
                             <a
