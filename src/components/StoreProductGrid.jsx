@@ -22,7 +22,10 @@ const StoreProductGrid = ({ title, subtitle }) => {
                     {products
                         .filter((p) => p.price > 19.99)
                         .map((product) => (
-                            <StoreGridItem product={product} key={product.id} />
+                            <StoreGridItem
+                                product={product}
+                                key={product._id}
+                            />
                         ))}
                 </StoreGridStyled>
             )}

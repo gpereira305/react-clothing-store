@@ -89,7 +89,7 @@ export const StoreGridIconsStyled = styled.div`
         transition: all ease 0.2s;
 
         &:hover {
-            background-color: var(--white-color);
+            /* background-color: var(--white-color); */
         }
     }
 `;

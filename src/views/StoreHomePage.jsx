@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import StoreBuyingInfo from "../components/StoreBuyingInfo";
 import StoreFooter from "../components/StoreFooter";
 import StoreHeader from "../components/StoreHeader";
@@ -7,7 +7,7 @@ import StoreLowerPrices from "../components/StoreLowerPrices";
 import StoreParallax from "../components/StoreParallax";
 import StoreProductGrid from "../components/StoreProductGrid";
 import StoreBlog from "../components/StoreBlog";
-import StoreProductDetailModal from "../components/common/StoreProductDetailModal";
+// import StoreProductDetailModal from "../components/common/StoreProductDetailModal";
 import StoreNewsLetterPopup from "../components/common/StoreNewsLetterPopup";
 
 const StoreHomePage = () => {
@@ -15,13 +15,15 @@ const StoreHomePage = () => {
         <>
             <StoreHeader />
             <StoreHero />
-            <StoreProductGrid title="Nova Coleção" subtitle="Novidades" />
-            <StoreProductDetailModal />
-            <StoreLowerPrices />
-            <StoreBlog />
-            <StoreBuyingInfo />
-            <StoreParallax />
-            <StoreNewsLetterPopup />
+            <main>
+                <StoreProductGrid title="Nova Coleção" subtitle="Novidades" />
+                {/* <StoreProductDetailModal /> */}
+                <StoreLowerPrices />
+                <StoreBlog />
+                <StoreBuyingInfo />
+                <StoreParallax />
+                <StoreNewsLetterPopup />
+            </main>
             <StoreFooter />
         </>
     );

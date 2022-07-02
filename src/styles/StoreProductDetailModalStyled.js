@@ -9,7 +9,7 @@ export const StoreProductModalStyled = styled.section`
     display: ${(props) => (props.open ? "flex" : "none")};
     justify-content: center;
     align-items: center;
-    background-color: rgb(0 0 0 / 75%);
+    background-color: rgb(0 0 0 / 20%);
     z-index: 100;
     overflow: hidden auto;
 `;

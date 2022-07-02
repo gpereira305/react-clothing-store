@@ -20,7 +20,7 @@ import {
 } from "../../styles/StoreProductDetailModalStyled";
 
 const StoreProductDetailModal = () => {
-    const { handleToggleModal, toggleModal } = useContext(StoreContext);
+    const { handleToggleModal, toggleModal, item } = useContext(StoreContext);
 
     return (
         <StoreProductModalStyled open={toggleModal} className="fade-in">
@@ -33,15 +33,15 @@ const StoreProductDetailModal = () => {
                 </StoreProductCloseModalStyled>
 
                 <StoreProductImageStyled>
-                    <img src={productImg} alt="" />
+                    <img src={item?.img} alt="" />
                 </StoreProductImageStyled>
 
                 <StoreProductInfoStyled>
                     <StoreProductInfoH3Styled>
-                        Blusa Daltex
+                        {item?.name}
                     </StoreProductInfoH3Styled>
                     <StoreProductInfoSpanStyled>
-                        R$ 29,99
+                        R${item?.price}
                     </StoreProductInfoSpanStyled>
 
                     <StoreProductHorizontalLineStyled />

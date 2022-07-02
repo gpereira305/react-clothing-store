@@ -22,7 +22,10 @@ const StoreLowerPrices = () => {
                     {products
                         .filter((p) => p.price < 20)
                         .map((product) => (
-                            <StoreGridItem product={product} key={product.id} />
+                            <StoreGridItem
+                                product={product}
+                                key={product._id}
+                            />
                         ))}
                 </StoreGridStyled>
             )}
