@@ -11,7 +11,7 @@ import StoreProductDetailModal from "./common/StoreProductDetailModal";
 const StoreGridItem = ({ product }) => {
     const { name, price, img } = product;
 
-    const { handleToggleModal, item } = useContext(StoreContext);
+    const { handleToggleModal, handleAddCartItem } = useContext(StoreContext);
 
     return (
         <>
@@ -36,6 +36,7 @@ const StoreGridItem = ({ product }) => {
                         <span
                             className="material-icons"
                             title="Adicionar ao carrinho"
+                            onClick={() => handleAddCartItem(product)}
                         >
                             shopping_basket
                         </span>

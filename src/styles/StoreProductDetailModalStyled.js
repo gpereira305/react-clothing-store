@@ -57,16 +57,24 @@ export const StoreProductImageStyled = styled.div`
     flex: 1;
     width: 100%;
     height: 100%;
-
-    > img {
+    > div {
         width: 330px;
+        overflow: hidden;
+        > img {
+            width: 330px;
+            transition: transform 0.2s, visibility 0.2s ease-in;
 
-        @media (max-width: 820px) {
-            width: 240px;
-        }
+            &:hover {
+                transform: scale(1.3);
+            }
 
-        @media (max-width: 520px) {
-            width: 190px;
+            @media (max-width: 820px) {
+                width: 240px;
+            }
+
+            @media (max-width: 520px) {
+                width: 190px;
+            }
         }
     }
 `;

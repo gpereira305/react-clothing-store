@@ -131,6 +131,124 @@ export const StoreNavMenuStyled = styled.div`
     }
 `;
 
+export const StoreNavCartWrapperStyled = styled.div`
+    position: absolute;
+    width: 300px;
+    background-color: var(--black-color);
+    color: var(--white-color);
+    right: -12px;
+    top: 30px;
+    padding: 20px 20px 0;
+    display: none;
+
+    &:hover {
+        display: block;
+    }
+`;
+
+export const StoreNavCartEmptyStyled = styled.div`
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const StoreNavCartItemsStyled = styled.div`
+    max-height: 18vh;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: var(--black-color);
+        border-radius: 20px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--gray-color);
+        border-radius: 20px;
+        height: 20px;
+    }
+`;
+
+export const StoreNavCartItemsDetailStyled = styled.div`
+    display: flex;
+    position: relative;
+    margin-bottom: 15px;
+
+    img {
+        width: 60px;
+    }
+
+    > div {
+        font-size: 0.75rem;
+        margin-left: 20px;
+
+        span {
+            font-size: 0.6rem;
+            margin-left: 0 !important;
+        }
+    }
+
+    > span {
+        margin-left: 0 !important;
+        position: absolute;
+        right: 0;
+        font-size: 0.75rem;
+        margin-right: 10px;
+        color: var(--red-color) !important;
+    }
+`;
+
+export const StoreNavCartActionsStyled = styled.div``;
+
+export const StoreNavCartActionsInfoStyled = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+
+    > h3 {
+        font-weight: 300;
+        color: var(--gray-color);
+    }
+
+    > span {
+        font-weight: 600;
+    }
+`;
+
+export const StoreNavCartActionsBtnsStyled = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+export const StoreNavCartActionsBtnsBtnStyled = styled.button`
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    color: ${(props) =>
+        props.primary ? "var(--dark-color2)" : "var(--black-color)"};
+    border: 1px solid
+        ${(props) =>
+            props.primary ? "var(--dark-color2)" : "var(--body-color)"};
+    background: ${(props) =>
+        props.primary ? "var(--black-color)" : "var(--body-color)"};
+    margin-bottom: 15px;
+    transition: var(--transition);
+
+    &:hover {
+        color: var(--body-color);
+        border: 1px solid
+            ${(props) =>
+                props.primary ? "var(--body-color)" : "var(--salmon-color)"};
+        background: ${(props) =>
+            props.primary ? "var(--black-color)" : "var(--salmon-color)"};
+    }
+`;
+
 export const StoreNavIconsStyled = styled.ul`
     display: flex;
     position: relative;
@@ -138,6 +256,7 @@ export const StoreNavIconsStyled = styled.ul`
     li {
         display: flex;
         align-items: center;
+        position: relative;
 
         span {
             transition: var(--transition);
@@ -147,6 +266,29 @@ export const StoreNavIconsStyled = styled.ul`
 
             @media (max-width: 820px) {
                 display: none;
+            }
+        }
+
+        span:nth-of-type(2) {
+            position: absolute;
+            height: 16px;
+            width: 16px;
+            border-radius: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--white-color);
+            color: var(--black-color);
+            right: -10px;
+            top: 0;
+            font-size: 0.7rem;
+        }
+    }
+
+    li:nth-of-type(2) {
+        &:hover {
+            > div {
+                display: block;
             }
         }
     }

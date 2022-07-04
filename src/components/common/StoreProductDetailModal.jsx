@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { StoreContext } from "../../storeContext";
-import productImg from "../../assets/images/products/product-14-alt.jpg";
 import { socials } from "../../helpers";
 import {
     StoreProductButtonStyled,
@@ -20,7 +19,12 @@ import {
 } from "../../styles/StoreProductDetailModalStyled";
 
 const StoreProductDetailModal = () => {
-    const { handleToggleModal, toggleModal, item } = useContext(StoreContext);
+    const {
+        handleToggleModal,
+        toggleModal,
+        item,
+        handleAddCartItem,
+    } = useContext(StoreContext);
 
     return (
         <StoreProductModalStyled open={toggleModal} className="fade-in">
@@ -33,7 +37,13 @@ const StoreProductDetailModal = () => {
                 </StoreProductCloseModalStyled>
 
                 <StoreProductImageStyled>
-                    <img src={item?.img} alt="" />
+                    <div>
+                        <img
+                            src={item?.img}
+                            alt={item?.name}
+                            title={item?.name}
+                        />
+                    </div>
                 </StoreProductImageStyled>
 
                 <StoreProductInfoStyled>
@@ -71,7 +81,10 @@ const StoreProductDetailModal = () => {
                                 20
                             </StoreProductOptionStyled>
                         </StoreProductSelectStyled>
-                        <StoreProductButtonStyled type="button">
+                        <StoreProductButtonStyled
+                            type="button"
+                            onClick={() => handleAddCartItem(item)}
+                        >
                             Adicionar ao carrinho
                         </StoreProductButtonStyled>
                     </StoreProductSelectWrapperStyled>

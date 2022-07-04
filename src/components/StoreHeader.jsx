@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { socials } from "../helpers";
 import "../styles/index.css";
+import { StoreContext } from "../storeContext";
+import { Link } from "react-router-dom";
 import {
     StoreHeaderStyled,
     StoreLogoStyled,
@@ -16,11 +18,21 @@ import {
     StoreOverlayStyled,
     StoreNavDialogStyled,
     StoreNavDialogWrapperStyled,
+    StoreNavCartWrapperStyled,
+    StoreNavCartItemsStyled,
+    StoreNavCartActionsStyled,
+    StoreNavCartActionsInfoStyled,
+    StoreNavCartActionsBtnsStyled,
+    StoreNavCartActionsBtnsBtnStyled,
+    StoreNavCartItemsDetailStyled,
+    StoreNavCartEmptyStyled,
 } from "../styles/StoreHeaderStyled";
 
 const StoreHeader = () => {
+    const { cartItem, handleRemoveItem } = useContext(StoreContext);
+
     const [isShrunk, setShrunk] = useState(false);
-    const [user, setUser] = useState(true);
+    const [user, setUser] = useState(false);
     let [toggleNav, setToggleNav] = useState(false);
 
     useEffect(() => {
@@ -136,7 +148,7 @@ const StoreHeader = () => {
                             )}
                         </li>
 
-                        <li title="Ver carrinho">
+                        <li>
                             <span
                                 className={`material-icons ${
                                     isShrunk ? "shrunk-icons" : ""
@@ -145,6 +157,77 @@ const StoreHeader = () => {
                             >
                                 shopping_bag
                             </span>
+                            {cartItem.length > 0 ? (
+                                <span
+                                    title={`Seu carrinho têm ${
+                                        cartItem.length
+                                    } ${
+                                        cartItem.length > 1 ? "itens" : "item"
+                                    }`}
+                                >
+                                    {cartItem.length}
+                                </span>
+                            ) : (
+                                ""
+                            )}
+                            <StoreNavCartWrapperStyled className="fade-in">
+                                {cartItem.length > 0 ? (
+                                    <>
+                                        <StoreNavCartItemsStyled>
+                                            {cartItem.map((item) => (
+                                                <Link
+                                                    to={`/product/${item._id}`}
+                                                    key={item._id}
+                                                >
+                                                    <StoreNavCartItemsDetailStyled>
+                                                        <img
+                                                            src={item.img}
+                                                            alt={item.name}
+                                                        />
+                                                        <div>
+                                                            <p>{item.name}</p>
+                                                            <span>
+                                                                R${item.price}
+                                                            </span>
+                                                        </div>
+                                                        <span
+                                                            className="material-icons"
+                                                            onClick={() =>
+                                                                handleRemoveItem(
+                                                                    item._id
+                                                                )
+                                                            }
+                                                            title="Remover item"
+                                                        >
+                                                            close
+                                                        </span>
+                                                    </StoreNavCartItemsDetailStyled>
+                                                </Link>
+                                            ))}
+                                        </StoreNavCartItemsStyled>
+                                        <StoreNavCartActionsStyled>
+                                            <StoreNavCartActionsInfoStyled>
+                                                <h3>Subtotal</h3>
+                                                <span>R$100,00</span>
+                                            </StoreNavCartActionsInfoStyled>
+                                            <StoreNavCartActionsBtnsStyled>
+                                                <StoreNavCartActionsBtnsBtnStyled
+                                                    primary
+                                                >
+                                                    Ver Carrinho
+                                                </StoreNavCartActionsBtnsBtnStyled>
+                                                <StoreNavCartActionsBtnsBtnStyled>
+                                                    Checkout
+                                                </StoreNavCartActionsBtnsBtnStyled>
+                                            </StoreNavCartActionsBtnsStyled>
+                                        </StoreNavCartActionsStyled>
+                                    </>
+                                ) : (
+                                    <StoreNavCartEmptyStyled>
+                                        <h3>Carrinho vazio</h3>
+                                    </StoreNavCartEmptyStyled>
+                                )}
+                            </StoreNavCartWrapperStyled>
                         </li>
                     </StoreNavIconsStyled>
                 </StoreNavStyled>
@@ -158,6 +241,7 @@ const StoreHeader = () => {
                     <StoreMenuBurgerStyled open={toggleNav} />
                 </StoreMenuIconStyled>
 
+                {/*------------- MOBILE VERSION ------------*/}
                 <StoreMenuMobileStyled open={toggleNav}>
                     <ul>
                         {user ? (
@@ -194,7 +278,7 @@ const StoreHeader = () => {
                                 </span>
                             </li>
                         )}
-                        <li title="Ver carrinho" onClick={handleToggleMenu}>
+                        <li onClick={handleToggleMenu}>
                             <span className="material-icons" title="Carrinho">
                                 shopping_bag
                             </span>
