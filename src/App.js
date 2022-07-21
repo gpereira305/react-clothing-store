@@ -5,6 +5,7 @@ import { StoreContext } from "./storeContext";
 import "./styles/index.css";
 import StoreHomePage from "./views/StoreHomePage";
 import StoreCartPage from "./views/StoreCartPage";
+import StoreCheckPage from "./views/StoreCheckPage";
 
 function App() {
     let [toggleModal, setToggleModal] = useState(false);
@@ -56,11 +57,9 @@ function App() {
             >
                 <Routes>
                     <Route exact path={"/"} element={<StoreHomePage />} />
-                    <Route
-                        exact
-                        path={"/product/:id"}
-                        element={<StoreCartPage />}
-                    />
+                    <Route exact path={"/product/:id"} element={<StoreCartPage />}/> 
+                    <Route exact path={"/cart"} element={<StoreCartPage />} />
+                    <Route exact path={"/checkout"} element={<StoreCheckPage />} />
                 </Routes>
                 <StoreGoTop />
             </StoreContext.Provider>

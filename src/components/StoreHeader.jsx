@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { socials } from "../helpers";
 import "../styles/index.css";
 import { StoreContext } from "../storeContext";
-import { Link } from "react-router-dom";
+import StoreHoverShoppingCart from "./StoreHoverShoppingCart";
 import {
     StoreHeaderStyled,
     StoreLogoStyled,
@@ -17,16 +17,13 @@ import {
     StoreSlideWrapperStyled,
     StoreOverlayStyled,
     StoreNavDialogStyled,
-    StoreNavDialogWrapperStyled,
-    StoreNavCartWrapperStyled,
-    StoreNavCartItemsStyled,
-    StoreNavCartActionsStyled,
-    StoreNavCartActionsInfoStyled,
-    StoreNavCartActionsBtnsStyled,
-    StoreNavCartActionsBtnsBtnStyled,
-    StoreNavCartItemsDetailStyled,
-    StoreNavCartEmptyStyled,
+    StoreNavDialogWrapperStyled, 
+    StoreMenuMobileListItemStyled,
+    StoreMenuMobileListStyled,
+    StoreMenuMobileCartIconStyled,
 } from "../styles/StoreHeaderStyled";
+import { Link } from "react-router-dom";
+
 
 const StoreHeader = () => {
     const { cartItem, handleRemoveItem } = useContext(StoreContext);
@@ -69,6 +66,7 @@ const StoreHeader = () => {
 
     return (
         <>
+        {/* ----- top header ------ */}
             <StoreSlideWrapperStyled>
                 <StoreSlideTrackStyled>
                     <StoreSlideItemStyled>
@@ -96,7 +94,8 @@ const StoreHeader = () => {
                     </StoreSlideItemStyled>
                 </StoreSlideTrackStyled>
             </StoreSlideWrapperStyled>
-
+            
+            {/*------ bottom header -----*/}
             <StoreHeaderStyled className={isShrunk ? "shrunk" : ""}>
                 <StoreNavStyled>
                     <StoreLogoStyled title="Home | Levezza">
@@ -115,119 +114,44 @@ const StoreHeader = () => {
                         <li>
                             {user ? (
                                 <>
-                                    <span
-                                        style={{ fontSize: ".75rem" }}
-                                        title={username}
-                                    >
-                                        Bem vindo,{" "}
-                                        {username.slice(
-                                            0,
-                                            username.indexOf(" ")
-                                        )}
+                                <span style={{ fontSize: ".75rem" }} title={username}>
+                                    Bem vindo,{" "}
+                                    {username.slice(0,username.indexOf(" "))}
+                                </span> 
+                                <StoreNavDialogWrapperStyled>
+                                    <span className="material-icons">
+                                        arrow_drop_down
                                     </span>
-
-                                    <StoreNavDialogWrapperStyled>
-                                        <span className="material-icons">
-                                            arrow_drop_down
-                                        </span>
-                                        <StoreNavDialogStyled className="fade-in">
-                                            <p title="Perfil">Perfil</p>
-                                            <p title="Dashboard">Dashboard</p>
-                                        </StoreNavDialogStyled>
-                                    </StoreNavDialogWrapperStyled>
+                                    <StoreNavDialogStyled className="fade-in">
+                                        <p title="Perfil">Perfil</p>
+                                        <p title="Dashboard">Dashboard</p>
+                                    </StoreNavDialogStyled>
+                                </StoreNavDialogWrapperStyled>
                                 </>
                             ) : (
-                                <span
-                                    className={`material-icons ${
-                                        isShrunk ? "shrunk-icons" : ""
-                                    }`}
+                                <span  className={`material-icons ${isShrunk ? "shrunk-icons" : ""}`}
                                     title="Usuário"
                                 >
-                                    person
+                                person
                                 </span>
                             )}
                         </li>
 
                         <li>
-                            <span
-                                className={`material-icons ${
-                                    isShrunk ? "shrunk-icons" : ""
-                                }`}
-                                title="Carrinho"
-                            >
+                            <span className={`material-icons ${isShrunk ? "shrunk-icons" : ""}`} title="Carrinho">
                                 shopping_bag
                             </span>
-                            {cartItem.length > 0 ? (
-                                <span
-                                    title={`Seu carrinho têm ${
-                                        cartItem.length
-                                    } ${
-                                        cartItem.length > 1 ? "itens" : "item"
-                                    }`}
-                                >
+                            {cartItem.length > 0 && (
+                                <span title={`Seu carrinho têm ${cartItem.length} 
+                                    ${cartItem.length > 1 ? "itens" : "item"}`}>
                                     {cartItem.length}
                                 </span>
-                            ) : (
-                                ""
-                            )}
-                            <StoreNavCartWrapperStyled className="fade-in">
-                                {cartItem.length > 0 ? (
-                                    <>
-                                        <StoreNavCartItemsStyled>
-                                            {cartItem.map((item) => (
-                                                <Link
-                                                    to={`/product/${item._id}`}
-                                                    key={item._id}
-                                                >
-                                                    <StoreNavCartItemsDetailStyled>
-                                                        <img
-                                                            src={item.img}
-                                                            alt={item.name}
-                                                        />
-                                                        <div>
-                                                            <p>{item.name}</p>
-                                                            <span>
-                                                                R${item.price}
-                                                            </span>
-                                                        </div>
-                                                        <span
-                                                            className="material-icons"
-                                                            onClick={() =>
-                                                                handleRemoveItem(
-                                                                    item._id
-                                                                )
-                                                            }
-                                                            title="Remover item"
-                                                        >
-                                                            close
-                                                        </span>
-                                                    </StoreNavCartItemsDetailStyled>
-                                                </Link>
-                                            ))}
-                                        </StoreNavCartItemsStyled>
-                                        <StoreNavCartActionsStyled>
-                                            <StoreNavCartActionsInfoStyled>
-                                                <h3>Subtotal</h3>
-                                                <span>R$100,00</span>
-                                            </StoreNavCartActionsInfoStyled>
-                                            <StoreNavCartActionsBtnsStyled>
-                                                <StoreNavCartActionsBtnsBtnStyled
-                                                    primary
-                                                >
-                                                    Ver Carrinho
-                                                </StoreNavCartActionsBtnsBtnStyled>
-                                                <StoreNavCartActionsBtnsBtnStyled>
-                                                    Checkout
-                                                </StoreNavCartActionsBtnsBtnStyled>
-                                            </StoreNavCartActionsBtnsStyled>
-                                        </StoreNavCartActionsStyled>
-                                    </>
-                                ) : (
-                                    <StoreNavCartEmptyStyled>
-                                        <h3>Carrinho vazio</h3>
-                                    </StoreNavCartEmptyStyled>
-                                )}
-                            </StoreNavCartWrapperStyled>
+                            )} 
+                            {/*-------- hover icone carrinho --------*/}
+                             <StoreHoverShoppingCart 
+                               cartItem={cartItem} 
+                               handleRemoveItem={handleRemoveItem}
+                            /> 
                         </li>
                     </StoreNavIconsStyled>
                 </StoreNavStyled>
@@ -243,9 +167,9 @@ const StoreHeader = () => {
 
                 {/*------------- MOBILE VERSION ------------*/}
                 <StoreMenuMobileStyled open={toggleNav}>
-                    <ul>
+                    <StoreMenuMobileListStyled>
                         {user ? (
-                            <li>
+                            <StoreMenuMobileListItemStyled>
                                 <span
                                     style={{
                                         fontSize: ".9rem",
@@ -267,7 +191,7 @@ const StoreHeader = () => {
                                         storefront
                                     </span>
                                 </div>
-                            </li>
+                            </StoreMenuMobileListItemStyled>
                         ) : (
                             <li onClick={handleToggleMenu}>
                                 <span
@@ -278,11 +202,19 @@ const StoreHeader = () => {
                                 </span>
                             </li>
                         )}
-                        <li onClick={handleToggleMenu}>
-                            <span className="material-icons" title="Carrinho">
-                                shopping_bag
-                            </span>
-                        </li>
+                        <StoreMenuMobileCartIconStyled onClick={handleToggleMenu}>
+                            <Link to={'/cart'}>
+                                <span className="material-icons" title="Carrinho">
+                                    shopping_bag
+                                </span>
+                                {cartItem.length > 0 && (
+                                <span title={`Seu carrinho têm ${cartItem.length} 
+                                    ${cartItem.length > 1 ? "itens" : "item"}`}>
+                                    {cartItem.length}
+                                </span>
+                                )} 
+                            </Link>
+                        </StoreMenuMobileCartIconStyled>
                         <li onClick={handleToggleMenu}>
                             <a href="#collection">Novidades</a>
                         </li>
@@ -292,7 +224,7 @@ const StoreHeader = () => {
                         <li onClick={handleToggleMenu}>
                             <a href="#blog">Blog</a>
                         </li>
-                    </ul>
+                    </StoreMenuMobileListStyled>
                 </StoreMenuMobileStyled>
                 <StoreOverlayStyled
                     open={toggleNav}
