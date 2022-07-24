@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { 
-    StoreNavCartActionsBtnsBtnStyled, 
+import {  
     StoreNavCartActionsBtnsStyled, 
     StoreNavCartActionsInfoStyled, 
     StoreNavCartActionsStyled, 
@@ -12,21 +11,21 @@ import {
     StoreNavCartWrapperStyled 
 } from '../styles/StoreHoverShoppingCartStyled'
 
-const StoreHoverShoppingCart = ({cartItem, handleRemoveItem}) => {
+const StoreHoverShoppingCart = ({cartItems, handleRemoveItem}) => {
   return (
             <StoreNavCartWrapperStyled className="fade-in">
-            {cartItem.length > 0 ? (
+            {cartItems.length > 0 ? (
                 <>
                     <StoreNavCartItemsStyled>
-                        {cartItem.map((item) => (
-                            <StoreNavCartItemsDetailStyled key={item._id}>
-                                <Link to={`/product/${item._id}`}>
+                        {cartItems.map((item) => (
+                            <StoreNavCartItemsDetailStyled key={item._id}> 
+                                <div>
                                     <img src={item.img} alt={item.name}/> 
                                     <div>
                                         <p>{item.name}</p> 
                                         <span>R${item.price}</span> 
-                                    </div>
-                                </Link> 
+                                    </div> 
+                                </div>
                                 <StoreNavCartRemoveItemStyled 
                                 className="material-icons" onClick={() => 
                                     handleRemoveItem(item._id)} title="Remover item">
@@ -42,12 +41,8 @@ const StoreHoverShoppingCart = ({cartItem, handleRemoveItem}) => {
                             <span>R$100,00</span>
                         </StoreNavCartActionsInfoStyled>
                         <StoreNavCartActionsBtnsStyled>
-                            <StoreNavCartActionsBtnsBtnStyled primary>
-                               <Link to={'/cart'}>Ver Carrinho</Link>
-                            </StoreNavCartActionsBtnsBtnStyled>
-                            <StoreNavCartActionsBtnsBtnStyled>
-                            <Link to={'/checkout'}>Checkout</Link> 
-                            </StoreNavCartActionsBtnsBtnStyled>
+                            <Link to={'/cart'} className='cart'>Ver Carrinho</Link>
+                            <Link to={'/checkout'} className='checkout'>Checkout</Link>  
                         </StoreNavCartActionsBtnsStyled>
                     </StoreNavCartActionsStyled>
                 </>

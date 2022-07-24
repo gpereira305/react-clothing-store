@@ -2,8 +2,7 @@ import styled from "styled-components";
 
 export const StoreFooterStyled = styled.footer`
     background-color: var(--dark-color);
-    position: relative;
-
+    position: relative; 
     > .diviser {
         position: absolute;
         height: 1px;

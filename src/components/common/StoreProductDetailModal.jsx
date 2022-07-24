@@ -38,11 +38,7 @@ const StoreProductDetailModal = () => {
 
                 <StoreProductImageStyled>
                     <div>
-                        <img
-                            src={item?.img}
-                            alt={item?.name}
-                            title={item?.name}
-                        />
+                        <img src={item?.img} alt={item?.name} title={item?.name}/>
                     </div>
                 </StoreProductImageStyled>
 
@@ -93,16 +89,8 @@ const StoreProductDetailModal = () => {
 
                     <StoreProductDetailSocialStyled>
                         {socials.map((social) => (
-                            <a
-                                href={social.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                key={social.id}
-                            >
-                                <i
-                                    className={social.name}
-                                    title={social.title}
-                                ></i>
+                            <a href={social.link} target="_blank" rel="noopener noreferrer" key={social.id}>
+                                <i className={social.name} title={social.title}></i>
                             </a>
                         ))}
                     </StoreProductDetailSocialStyled>

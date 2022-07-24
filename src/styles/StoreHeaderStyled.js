@@ -95,8 +95,7 @@ export const StoreNavStyled = styled.nav`
 `;
 
 export const StoreNavMenuStyled = styled.div`
-    display: flex;
-    justify-content: space-between;
+    display: flex; 
     align-items: center;
     width: 30%;
     min-width: 280px;
@@ -126,6 +125,11 @@ export const StoreNavMenuStyled = styled.div`
         }
     }
 
+    h3 {
+        color: var(--body-color);
+        font-weight: 400;
+    }
+    
     @media (max-width: 820px) {
         display: none;
     }
@@ -265,35 +269,31 @@ export const StoreMenuMobileListStyled = styled.ul`
 export const StoreMenuMobileCartIconStyled = styled.li`
   position: relative;
   
-  a {  
-    > span:nth-of-type(2) {
-        position: absolute;
-        height: 16px;
-        width: 16px;
-        border-radius: 100%;
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: center;
-        -webkit-justify-content: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        -webkit-align-items: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        background-color: var(--white-color);
-        color: var(--salmon-color);
-        right: 24px;
-        top: -6px;
-        font-size: 0.7rem;
-        font-weight: 700;
-    }
-  }
-
-
-` 
+  > span:nth-of-type(2) {
+      position: absolute;
+      height: 16px;
+      width: 16px;
+      border-radius: 100%;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-align-items: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      background-color: var(--white-color);
+      color: var(--salmon-color);
+      right: 24px;
+      top: -6px;
+      font-size: 0.7rem;
+      font-weight: 700;
+  } 
+`; 
 
 export const StoreMenuMobileListItemStyled = styled.li`
     display: flex;
@@ -314,7 +314,7 @@ export const StoreMenuMobileListItemStyled = styled.li`
         font-size: 1rem;
         color: var(--white-color);
     }
-` 
+`; 
 
 export const StoreMenuBurgerStyled = styled.span`
     display: block;

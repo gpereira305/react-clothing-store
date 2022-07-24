@@ -22,15 +22,20 @@ import {
     StoreMenuMobileListStyled,
     StoreMenuMobileCartIconStyled,
 } from "../styles/StoreHeaderStyled";
-import { Link } from "react-router-dom";
+import { Link, useLocation  } from "react-router-dom";
 
 
 const StoreHeader = () => {
-    const { cartItem, handleRemoveItem } = useContext(StoreContext);
+    const { cartItems, handleRemoveItem } = useContext(StoreContext);
 
     const [isShrunk, setShrunk] = useState(false);
     const [user, setUser] = useState(false);
-    let [toggleNav, setToggleNav] = useState(false);
+    let [toggleNav, setToggleNav] = useState(false);  
+    let location = useLocation();
+
+    const isHome = location.pathname 
+
+ 
 
     useEffect(() => {
         const onScroll = () => {
@@ -58,11 +63,10 @@ const StoreHeader = () => {
     }, []);
 
     const handleToggleMenu = () => {
-        setToggleNav(!toggleNav);
-        // goToTopImg()
+        setToggleNav(!toggleNav); 
     };
 
-    const username = "Carlos Santos";
+    const username = "Carlos Santos"; 
 
     return (
         <>
@@ -78,16 +82,8 @@ const StoreHeader = () => {
                     <StoreSlideItemStyled>
                         <div className="social">
                             {socials.map((social) => (
-                                <a
-                                    href={social.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    key={social.id}
-                                >
-                                    <i
-                                        className={social.name}
-                                        title={social.title}
-                                    ></i>
+                                <a href={social.link} target="_blank" rel="noopener noreferrer" key={social.id}>
+                                    <i className={social.name} title={social.title}></i>
                                 </a>
                             ))}
                         </div>
@@ -98,16 +94,31 @@ const StoreHeader = () => {
             {/*------ bottom header -----*/}
             <StoreHeaderStyled className={isShrunk ? "shrunk" : ""}>
                 <StoreNavStyled>
-                    <StoreLogoStyled title="Home | Levezza">
-                        <a className={isShrunk ? "shrunk-h3" : ""} href="/">
-                            Venezza
-                        </a>
+                    <StoreLogoStyled title={`${isHome !== '/' ? 'Home' : 'Home | Leveza' }`}> 
+                        <Link to={'/'} className={isShrunk ? "shrunk-h3" : ""}>
+                           Venezza
+                        </Link>
                     </StoreLogoStyled>
 
-                    <StoreNavMenuStyled>
-                        <a href="#collection">Novidades</a>
-                        <a href="#sale">Descontos</a>
-                        <a href="#blog">Blog</a>
+                    <StoreNavMenuStyled 
+                      style={{justifyContent: `${isHome === '/' ? 'space-between' : 'center'}`}}>
+                        {isHome === '/' ? (
+                         <>
+                            <a href="#collection">Novidades</a>
+                            <a href="#sale">Descontos</a>
+                            <a href="#blog">Blog</a>
+                         </>
+                        ) : (
+                           <>
+                            {isHome === '/cart' && (
+                                <h3>Carrinho</h3>
+                            )}
+                            {isHome === '/checkout' && (
+                                <h3>Checkout</h3>
+                            )}
+                           </>
+                        )}
+
                     </StoreNavMenuStyled>
 
                     <StoreNavIconsStyled>
@@ -141,15 +152,15 @@ const StoreHeader = () => {
                             <span className={`material-icons ${isShrunk ? "shrunk-icons" : ""}`} title="Carrinho">
                                 shopping_bag
                             </span>
-                            {cartItem.length > 0 && (
-                                <span title={`Seu carrinho têm ${cartItem.length} 
-                                    ${cartItem.length > 1 ? "itens" : "item"}`}>
-                                    {cartItem.length}
+                            {cartItems.length > 0 && (
+                                <span title={`Seu carrinho têm ${cartItems.length} 
+                                    ${cartItems.length > 1 ? "itens" : "item"}`}>
+                                    {cartItems.length}
                                 </span>
                             )} 
                             {/*-------- hover icone carrinho --------*/}
                              <StoreHoverShoppingCart 
-                               cartItem={cartItem} 
+                               cartItems={cartItems} 
                                handleRemoveItem={handleRemoveItem}
                             /> 
                         </li>
@@ -170,21 +181,13 @@ const StoreHeader = () => {
                     <StoreMenuMobileListStyled>
                         {user ? (
                             <StoreMenuMobileListItemStyled>
-                                <span
-                                    style={{
-                                        fontSize: ".9rem",
-                                    }}
-                                    title={username}
-                                >
+                                <span style={{fontSize: ".9rem"}} title={username}>
                                     Bem vindo, <br />
                                     {username.slice(0, username.indexOf(" "))}
                                 </span>
 
                                 <div>
-                                    <span
-                                        className="material-icons"
-                                        style={{ marginBottom: "20px" }}
-                                    >
+                                    <span  className="material-icons" style={{marginBottom: "20px"}}>
                                         settings
                                     </span>
                                     <span className="material-icons">
@@ -194,26 +197,23 @@ const StoreHeader = () => {
                             </StoreMenuMobileListItemStyled>
                         ) : (
                             <li onClick={handleToggleMenu}>
-                                <span
-                                    className="material-icons"
-                                    title="Usuário"
-                                >
+                                <span className="material-icons" title="Usuário">
                                     person
                                 </span>
                             </li>
                         )}
                         <StoreMenuMobileCartIconStyled onClick={handleToggleMenu}>
-                            <Link to={'/cart'}>
+                            <>
                                 <span className="material-icons" title="Carrinho">
                                     shopping_bag
                                 </span>
-                                {cartItem.length > 0 && (
-                                <span title={`Seu carrinho têm ${cartItem.length} 
-                                    ${cartItem.length > 1 ? "itens" : "item"}`}>
-                                    {cartItem.length}
+                                {cartItems.length > 0 && (
+                                <span title={`Seu carrinho têm ${cartItems.length} 
+                                    ${cartItems.length > 1 ? "itens" : "item"}`}>
+                                    {cartItems.length}
                                 </span>
                                 )} 
-                            </Link>
+                            </>
                         </StoreMenuMobileCartIconStyled>
                         <li onClick={handleToggleMenu}>
                             <a href="#collection">Novidades</a>

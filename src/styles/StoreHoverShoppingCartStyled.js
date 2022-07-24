@@ -41,7 +41,7 @@ export const StoreNavCartItemsDetailStyled = styled.div`
     position: relative;
     margin-bottom: 15px;
    
-     a {
+     > div {
         display: flex;
         flex: 2;
         color: var(--gray-color);
@@ -92,36 +92,42 @@ export const StoreNavCartActionsInfoStyled = styled.div`
 
 export const StoreNavCartActionsBtnsStyled = styled.div`
     display: flex;
-    flex-direction: column;
-`;
-
-export const StoreNavCartActionsBtnsBtnStyled = styled.button`  
-    padding: 10px;
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    font-weight: 700;
-    cursor: pointer; 
-    border: 1px solid ${(props) => props.primary ? "var(--dark-color2)" : "var(--body-color)"};
-    background: ${(props) => props.primary ? "var(--black-color)" : "var(--body-color)"};
-    margin-bottom: 15px;
-    transition: var(--transition);
-
-    &:hover { 
-        border: 1px solid ${(props) => props.primary ? "var(--body-color)" : "var(--salmon-color)"};
-        background: ${(props) => props.primary ? "var(--black-color)" : "var(--salmon-color)"};
-    }
+    flex-direction: column; 
 
     a {
-        color: ${(props) =>
-        props.primary ? "var(--dark-color2)" : "var(--black-color)"};
-        transition: var(--transition);
-        
-        &:hover {
+        padding: 10px;
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 0.75rem;
+        font-weight: 700;
+        cursor: pointer;  
+        transition: var(--transition); 
+        margin-bottom: 15px;
+     } 
+
+     > .cart {
+         border: 1px solid var(--dark-color2);
+         background-color: var(--black-color); 
+         color: var(--dark-color2);
+         &:hover {
+            border: 1px solid var(--body-color);
+            background-color: var(--black-color); 
             color: var(--body-color);
-        }
+         }
+      }
+
+    > .checkout {
+         border: 1px solid var(--body-color);
+         background-color: var(--body-color); 
+         color: var(--black-color);
+         &:hover {
+            border: 1px solid var(--salmon-color);
+            background-color: var(--salmon-color);
+            color: var(--body-color);
+         }
     }
 `;
-
+ 
 export const StoreNavCartEmptyStyled = styled.div`
     min-height: 20vh;
     display: flex;

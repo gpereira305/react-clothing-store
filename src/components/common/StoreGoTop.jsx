@@ -5,6 +5,7 @@ const StoreScrollTopStyled = styled.div`
   position: fixed;
   bottom: 13%;
   right: 5%;
+  z-index: 100;
 
   span {
     cursor: pointer;
