@@ -34,7 +34,7 @@ function App() {
         }
         localStorage.setItem("cartItems", JSON.stringify([prev, ...cartItems]));
         setCartItems([prev, ...cartItems]);
-        setToggleModal(!toggleModal);
+        setToggleModal(false);
     };
 
     const handleRemoveItem = (_id) => {

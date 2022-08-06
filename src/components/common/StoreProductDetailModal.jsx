@@ -89,7 +89,8 @@ const StoreProductDetailModal = () => {
 
                     <StoreProductDetailSocialStyled>
                         {socials.map((social) => (
-                            <a href={social.link} target="_blank" rel="noopener noreferrer" key={social.id}>
+                            <a href={social.link} target="_blank" 
+                               rel="noopener noreferrer" key={social.id}>
                                 <i className={social.name} title={social.title}></i>
                             </a>
                         ))}

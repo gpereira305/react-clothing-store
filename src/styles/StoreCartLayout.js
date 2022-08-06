@@ -15,8 +15,17 @@ export const StoreCartInnerContainerStyled = styled.div`
     display: flex;
     gap: 40px; 
 
+    @media(max-width: 1224px) {
+        gap: 10px
+    }
+
     @media(max-width: 960px) {
         flex-direction: column;
+        padding-top: 20%;
+    }
+
+    @media(max-width: 460px) {
+        padding-top: 30%;
     }
 `;
 
@@ -85,14 +94,23 @@ export const StoreCartItemsListedBodyStyled = styled.div`
 
     > img {
         width: 120px;
+        
+        @media(max-width: 620px) {
+            width: 70%;
+        }
     }
      > span {
         font-weight: 600; 
     }
+  
+    @media(max-width: 620px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 `;
  
 export const StoreCartItemsEmptyCartStyled = styled.div`
-     display: flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -103,20 +121,27 @@ export const StoreCartItemsInfoStyled = styled.div`
     flex: 1; 
     display: flex;
     justify-content: center;
+    max-height: 40vh;
+
+    @media(max-width: 620px){
+        max-height: none;
+    }
 `;
 
 export const StoreCartItemsInfoWrapperStyled = styled.div`
     width: 100%; 
     padding: 15px;
+    background-color: #dfdfdf;
 
     > h2 {
         font-weight: 400;
-        padding-bottom: 40px;
+        margin-bottom: 35px;
+        text-transform: uppercase;
     } 
 `;
 
 export const StoreCartItemsInfoSubtotalStyled = styled.div`
- padding-bottom: 40px;
+ margin-bottom: 40px;
    
    p {
     font-weight: 600;
