@@ -26,7 +26,7 @@ html {
     --red-color: #ed1212;
     --salmon-color: #f57250;
     --light_gray-color: #eff1f2;
-    --transition: all 0.4s ease-in-out;
+    --transition: all 0.3s ease;
 }
 
 /**

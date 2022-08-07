@@ -5,9 +5,10 @@ import { StoreContext } from "./storeContext";
 import "./styles/index.css";
 import StoreHomePage from "./views/StoreHomePage";
 import StoreCartPage from "./views/StoreCartPage";
-import StoreCheckPage from "./views/StoreCheckPage"; 
+import StoreCheckoutPage from "./views/StoreCheckoutPage"; 
 import StoreHeader from "./components/StoreHeader";
 import StoreFooter from "./components/StoreFooter";
+import StoreSignup from "./views/StoreSignup";
 
 function App() {
     let [toggleModal, setToggleModal] = useState(false);
@@ -71,7 +72,8 @@ function App() {
                     <Route exact path={"/"} element={<StoreHomePage />} />
                     <Route exact path={"/product/:id"} element={<StoreCartPage />}/> 
                     <Route exact path={"/cart"} element={<StoreCartPage />} />
-                    <Route exact path={"/checkout"} element={<StoreCheckPage />} />
+                    <Route exact path={"/signup"} element={<StoreSignup />} />
+                    <Route exact path={"/checkout"} element={<StoreCheckoutPage />} />
                 </Routes>
                 <StoreGoTop />
                 <StoreFooter />

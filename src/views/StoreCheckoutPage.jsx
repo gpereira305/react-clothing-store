@@ -1,7 +1,8 @@
 import React, { useContext, useEffect } from 'react'
+import StoreCheckoutForm from '../components/StoreCheckoutForm';
 import { StoreContext } from '../storeContext';
 
-const StoreCheckPage = () => {
+const StoreCheckoutPage = () => {
   const { handleGoTopPage } = useContext(StoreContext); 
 
   useEffect(()=> {
@@ -9,9 +10,9 @@ const StoreCheckPage = () => {
   }, [])
 
 
-  return (
-    <div>StoreCheckPage</div>
+  return ( 
+        <StoreCheckoutForm/> 
   )
 }
 
-export default StoreCheckPage
+export default StoreCheckoutPage

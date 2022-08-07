@@ -114,7 +114,10 @@ const StoreHeader = () => {
                                 <h3>Carrinho</h3>
                             )}
                             {isHome === '/checkout' && (
-                                <h3>Checkout</h3>
+                                <h3>Endereço de entrega</h3>
+                            )}
+                            {isHome === '/signup' && (
+                                <h3>Logar</h3>
                             )}
                            </>
                         )}
